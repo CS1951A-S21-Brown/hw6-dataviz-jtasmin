@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <title>Assignment 6 &laquo; Data Visualization Dashboard&raquo;</title>
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="main.css"/>
+        <!--Feel free to add more CSS files as needed-->
+        <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="https://unpkg.com/topojson@3"></script>
+    </head>
+<body>
+    <div class="header">
+        <h3>&laquo; Assignment 6: Video Games & Genres Dashboard &raquo;</h3>
+    </div>
+    <!--  We included a basic HTML structure for the 3 graphs here. Feel free to change this if you'd like  -->
+    <div class="row">
+        <div class="col-lg-6">
+            <h5>Top video games by Global Sales by Decade &#128187;</h5>
+            <div id="centerbuttons">
+                <button type="button" class="btn" onclick="setData(0,'Name')">All-Time</button>
+                <button type="button" class="btn" onclick="setData(1,'Name')">2000s</button>
+                <button type="button" class="btn" onclick="setData(2,'Name')">1990s</button>
+            </div>
+            <div id="graph1"></div>
+            <h5>Top Game Publisher for Each Genre &#128511; </h5>
+            <p>Hover over each data point to see the top publisher for that genre! All-time data is used for this graph.<br>
+                Can you spot the world's most popular game publisher?
+             </p>
+            <div id="graph2"></div><br/>
+        </div>
+        <div class="col-lg-6">
+            <h5>Top Game Genre in Each Country by Sales &#127752;</h5>
+            <p> Hover over a country to see the game genre that sold the most number of games in that country!<br> 
+                All-time data is used and combined with TopoJSON. Data was pre-processed into separate csv files before entered into D3.js
+                <br>Can you see a pattern in the top genre in (almost) every country? (Hint: Japan is an outlier!)
+            </p>
+            <div id="graph3"></div>
+        </div>
+    </div>
+    <!--Feel free to add more JavaScript files as needed-->
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="graph1.js"></script>
+    <script type="text/javascript" src="graph2.js"></script>
+    <script type="text/javascript" src="graph3.js"></script>
+    <div id="written-1">
+    <h5>Answers to Written Questions</h5>
+    <!--Describe how your dashboard answers the questions presented. You don't have to address every question directly, but should at a high level address the main questions. (10 points)
+        List 3 reasons why D3 was helpful and improved your visualization (6 points)
+        List 3 reasons why D3 would not be the best tool for creating a visualization (6 points)-->
+    <p style="font-size: 12px"><b>Part 1</b></p>
+    <p>This dashboard explores the top video games, video game genres, and video game publishers according to <a href="https://www.kaggle.com/gregorut/videogamesales">this Kaggle dataset</a>. 
+        <br>To answer the first question of what the top video game is, I created a dynamic bar chart that plots the top games according to global sales, first
+        <br>for games released at any time (the all-time button), and then for specific decades (to see what has changed across the two most recent decades).
+        <br>The map graph is used to answer the question of what the top genre is in each country. Using the broken-down sales in the dataset, I preprocessed
+        <br>the data to break down total sales for each genre within a specific region. The top genre is showed as a tooltip upon hovering on the country.
+        <br>To answer the third question of what the top publisher in each genre is, I preprocessed the dataset again externally to group a publisher's
+        <br>global sales for their games by genre and add up total sales for all their games in that genre. Then I used this data to plot a scatter graph of
+        <br>vs. global sales (total), and upon hovering each data point, you can see the top publisher for that genre and exactly how many games they have sold
+        <br>within the genre (over all-time included in the dataset).
+    </p>
+    <p>D3 was helpful because there was a lot of online documentation available and I could use additional packages like TOPOJSON to easily create decent
+        <br>maps. I also liked that D3 is built on javascript, which means that it has a lot of options for customisability and interactivity for our plots.
+        <br>Additionally, I also liked that there are pre-set plot types in D3, which made creating new visualisations (particularly as someone who had not done 
+        <br>this before) fairly intuitive. The fact that it can use JSON, CSV files (which are pretty common) also meant that I could easily preprocess my data externally.
+    </p>
+    <p>D3 may not be the best visualisation tool for all purposes — if, for example, the creator is not particularly technical then perhaps a more visual editing interface
+        <br>may be a lot more useful and easier to use. The fact that all shapes (from the rectangles to the circles) were all manually created means this was not so much
+        <br>of a "quick" visualization tool but an in-depth, longer process. Additionally, there is no 'suggested charts' type, and the freedom that D3 gives you may
+        <br>not be as appropriate if you are unsure of what type of chart/graph may suit your data best, as it is quite annoying to switch between chart types.
+    </p>
+</div>
+<div id="written-2">
+    <p style="font-size: 12px"><b>Part 2</b></p>
+    <!--Evaluate the accessibility of your dashboard based on the readings in the “Before you begin” section. What kinds of users might find this dashboard accessible and 
+        who might have more difficulty? What additional actions might you take to make this dashboard more accessible to all audiences? Your response should refer to at 
+        least one of the readings and be about 1 paragraph. Reflect on the stages of your design and implementation process when you could have taken steps to make your 
+        dashboard more accessible to all audiences. What are some factors that kept you from taking these steps? (a few sentences) -->
+    <p>I believe my dashboard's colours are quite accessible as I've designed it in order to keep it accessible according to the guidelines given in several ways. A big one for me
+        <br>was using colours that would be distinguishable by the colour-blind, while still making it visually appealing to those who are not. To do this, I selected
+        <br>multiple shades of muted red that would not be quite bright, but had different brightness levels so it could be told apart even when in greyscale (to ensure 
+        <br>this), I tried looking at my dashboard in greyscale. However, I believe there are a lot of other ways my dashboard's accessibility could be improved, 
+        <br>particularly in terms of digital accessibility — I have significant information in the tooltips of graphs 2 and 3 (the map and scatter plots), which means that users
+        <br>who are unable to access these lose out on this information. If I had more time, I would alter it so that the map would be coloured differently depending on its
+        <br>most popular genre (this would be particularly complex since I don't have much experience with TOPOJson). Additionally, I would also label the points on 
+        <br>the scatter plots with their top publisher, either through a colour and a legend or by text. I didn't do the text because I believe it would have 
+        <br>cluttered the visualisation. If I had more time, I would perhaps find more contrasting colours for the selectively-coloured scatter graph in order to make it
+        <br>clearer to those without access to tooltips and were colour-blind. If I had more time (and knowledge of this!) at the time of creation I would also 
+        <br>possibly look at the Contrast Checker to make sure that my colours "mathematically" are contrasting enough, since using my own eye for greyscale might not be the best gauge.
+        <br>One thing that I implemented after reading this was a legend and selective colouring, to make the scatter plot digitally more accessible to and to emphasize
+        <br>the main point of the graph, which is the top publisher of the genre.
+    </p>
+</div>
+</body>
+</html>
