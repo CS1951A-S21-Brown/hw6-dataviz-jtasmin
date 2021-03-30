@@ -15,7 +15,7 @@ let scatter = d3.select("#graph2")
         `translate(${margin.left-80},${20})`)
 
 // reading the data in
-d3.csv("https://github.com/CS1951A-S21-Brown/hw6-dataviz-jtasmin/blob/main/data/top_publishers.csv").then(function(data) {
+d3.csv("https://raw.githubusercontent.com/CS1951A-S21-Brown/hw6-dataviz-jtasmin/main/data/top_publishers.csv").then(function(data) {
 
     // y-axis
     var y = d3.scaleLinear()
