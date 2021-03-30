@@ -15,7 +15,7 @@ var g = map2.append("g");
 
 // create country names, publisher, id object
 const countryNames = [];
-d3.csv("./data/top_genre.csv").then(function(csvData) {
+d3.csv("https://github.com/CS1951A-S21-Brown/hw6-dataviz-jtasmin/blob/main/data/top_genre.csv").then(function(csvData) {
     csvData.forEach(function(d) {
         let element = {id: d.iso_n3, name: d.name, publisher: d.publisher, genre: d.genre};
         countryNames.push(element);
@@ -26,7 +26,7 @@ d3.csv("./data/top_genre.csv").then(function(csvData) {
 
 // load in map data, which has been joined with top_publishers data that was preprocessed
 // with top publishers and top genre broken down by region
-d3.json("./data/world-110m2.json").then(function(topology) {
+d3.json("https://raw.githubusercontent.com/CS1951A-S21-Brown/hw6-dataviz-jtasmin/main/data/world-110m2.json").then(function(topology) {
     g.selectAll("path")
         .data(topojson.feature(topology,topology.objects.countries).features)
         .enter().append("path")
