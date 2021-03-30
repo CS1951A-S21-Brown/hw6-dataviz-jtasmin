@@ -15,7 +15,7 @@ var g = map2.append("g");
 
 // create country names, publisher, id object
 const countryNames = [];
-d3.csv("https://github.com/CS1951A-S21-Brown/hw6-dataviz-jtasmin/blob/main/data/top_genre.csv").then(function(csvData) {
+d3.csv("https://raw.githubusercontent.com/CS1951A-S21-Brown/hw6-dataviz-jtasmin/main/data/top_genre.csv").then(function(csvData) {
     csvData.forEach(function(d) {
         let element = {id: d.iso_n3, name: d.name, publisher: d.publisher, genre: d.genre};
         countryNames.push(element);
