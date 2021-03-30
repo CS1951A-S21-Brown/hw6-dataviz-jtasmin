@@ -15,7 +15,7 @@ let scatter = d3.select("#graph2")
         `translate(${margin.left-80},${20})`)
 
 // reading the data in
-d3.csv("../data/top_publishers.csv").then(function(data) {
+d3.csv("./data/top_publishers.csv").then(function(data) {
 
     // y-axis
     var y = d3.scaleLinear()
